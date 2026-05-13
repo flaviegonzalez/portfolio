@@ -3,10 +3,49 @@ const state = {
     viewH: 40,
     startH: 40,
     maxH: 100,
-    isDragging: false,
-    pos: 0,
-    startX: 0,
-    speed: 0.7
+    carouselImages: [
+        'assets/Flavie Gonzalez Architecte 1.png',
+        'assets/Flavie Gonzalez Architecte 2.png',
+        'assets/Flavie Gonzalez Architecte 3.png',
+        'assets/Flavie Gonzalez Architecte 4.png',
+        'assets/Flavie Gonzalez Architecte 5.png',
+        'assets/Flavie Gonzalez Architecte 6.png',
+        'assets/Flavie Gonzalez Architecte 7.png',
+        'assets/Flavie Gonzalez Architecte 8.png',
+        'assets/Flavie Gonzalez Architecte 9.png',
+        'assets/Flavie Gonzalez Architecte 10.png',
+        'assets/Flavie Gonzalez Architecte 11.png',
+        'assets/Flavie Gonzalez Architecte 12.png',
+        'assets/Flavie Gonzalez Architecte 13.png',
+        'assets/Flavie Gonzalez Architecte 14.png',
+        'assets/Flavie Gonzalez Architecte 15.png',
+        'assets/Flavie Gonzalez Architecte 16.png',
+        'assets/Flavie Gonzalez Architecte 17.png',
+        'assets/Flavie Gonzalez Architecte 18.png',
+        'assets/Flavie Gonzalez Architecte 19.png'
+    ],
+    carouselCaptions: [
+        "L'Atlantique, Biarritz",
+        "L'Atlantique, Biarritz",
+        "L'Atlantique, Biarritz",
+        "L'Atlantique, Biarritz",
+        "L'Atlantique, Biarritz",
+        "Jacques Louvel Tessier, Paris",
+        "Jacques Louvel Tessier, Paris",
+        "Jacques Louvel Tessier, Paris",
+        "Jacques Louvel Tessier, Paris",
+        "Jacques Louvel Tessier, Paris",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie",
+        "L'Alpage, Haute-Savoie"
+    ],
+    carouselIndex: 0
 };
 
 const dom = {
@@ -15,8 +54,10 @@ const dom = {
     viewPanel: document.getElementById('viewPanel'),
     viewScroll: document.getElementById('viewScrollArea'),
     infoPanel: document.getElementById('infoPanel'),
-    track: document.getElementById('track'),
-    carousel: document.getElementById('carousel')
+    carouselImage: document.getElementById('carouselImage'),
+    carouselCaption: document.getElementById('carouselCaption'),
+    prevBtn: document.getElementById('prevBtn'),
+    nextBtn: document.getElementById('nextBtn')
 };
 
 // =====================
@@ -200,7 +241,7 @@ dom.viewPanel.addEventListener(
 // =====================
 window.addEventListener('mousedown', e => {
 
-    if (e.target.closest('#carousel')) {
+    if (e.target.closest('#carouselContainer')) {
         closeAllPanels();
         return;
     }
@@ -223,51 +264,29 @@ window.addEventListener('mousedown', e => {
 // =====================
 // 🎞 CAROUSEL
 // =====================
-const initCarousel = () => {
-    const images = dom.track.innerHTML;
-    dom.track.innerHTML = images + images;
-    animate();
+const updateCarousel = () => {
+    dom.carouselImage.src = state.carouselImages[state.carouselIndex];
+    dom.carouselCaption.innerText = state.carouselCaptions[state.carouselIndex];
 };
 
-const animate = () => {
-    if (!state.isDragging) {
-        state.pos -= state.speed;
-
-        const halfWidth = dom.track.scrollWidth / 2;
-
-        if (Math.abs(state.pos) >= halfWidth) {
-            state.pos = 0;
-        }
-
-        dom.track.style.transform = `translateX(${state.pos}px)`;
-    }
-
-    requestAnimationFrame(animate);
+const nextCarousel = () => {
+    state.carouselIndex = (state.carouselIndex + 1) % state.carouselImages.length;
+    updateCarousel();
 };
 
-dom.carousel.addEventListener('mousedown', e => {
-    state.isDragging = true;
-    state.startX = e.pageX - state.pos;
-});
+const prevCarousel = () => {
+    state.carouselIndex = (state.carouselIndex - 1 + state.carouselImages.length) % state.carouselImages.length;
+    updateCarousel();
+};
 
-window.addEventListener('mouseup', () => {
-    state.isDragging = false;
-});
-
-window.addEventListener('mousemove', e => {
-    if (state.isDragging) {
-        state.pos = e.pageX - state.startX;
-
-        const halfWidth = dom.track.scrollWidth / 2;
-
-        if (state.pos > 0) state.pos = -halfWidth;
-        if (state.pos < -halfWidth) state.pos = 0;
-
-        dom.track.style.transform = `translateX(${state.pos}px)`;
-    }
-});
+dom.nextBtn.addEventListener('click', nextCarousel);
+dom.prevBtn.addEventListener('click', prevCarousel);
 
 // =====================
 // 🚀 INIT
 // =====================
+const initCarousel = () => {
+    updateCarousel();
+};
+
 window.onload = initCarousel;

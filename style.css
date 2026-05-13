@@ -19,7 +19,7 @@ html, body {
     height: 100%;
     overflow: hidden;
     font-family: 'Cormorant Garamond', serif;
-    background: #fff;
+    background: rgb(250, 249, 244);
 }
 
 /* HEADER */
@@ -70,7 +70,14 @@ html, body {
 
 #infoPanel {
     height: 35vh;
-    background: #fff;
+    background: rgb(250, 249, 244);
+    z-index: 1100;
+    border-top: 1px solid #eee;
+}
+
+#contactPanel {
+    height: 35vh;
+    background: rgb(250, 249, 244);
     z-index: 1100;
     border-top: 1px solid #eee;
 }
@@ -85,7 +92,6 @@ html, body {
     background: var(--bg-dark);
     color: var(--text-light);
     z-index: 1200;
-    box-shadow: 0 -20px 40px rgba(0,0,0,0.6);
 }
 
 /* INFO GRID */
@@ -181,11 +187,26 @@ html, body {
     gap: 10px;
 }
 
+.view-gallery figure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
 .view-gallery img {
     width: 100%;
-    height: 400px;        /* hauteur fixe identique pour toutes */
-    object-fit: cover;    /* recadre sans déformation */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
     display: block;
+}
+
+.view-gallery figcaption {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #666;
+    font-style: normal;
 }
 
 /* TEXTE SOUS LES IMAGES */
@@ -194,42 +215,81 @@ html, body {
 }
 
 /* ========================= */
-/* CAROUSEL                  */
+/* BACKGROUND GALLERY        */
 /* ========================= */
 
-.cargo-carousel { 
+.gallery-bg {
     position: fixed;
     inset: 0;
     z-index: 1;
     overflow: hidden;
     user-select: none;
-<<<<<<< HEAD
-<<<<<<< HEAD
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background: rgb(250, 249, 244);
-=======
->>>>>>> parent of 971a688 (changement carrousel, page contact, couleur blanche de fond)
-=======
->>>>>>> parent of 971a688 (changement carrousel, page contact, couleur blanche de fond)
 }
 
-.cargo-track { 
+.gallery-content {
     display: flex;
-    align-items: flex-end;
-    height: 100%;
-    will-change: transform;
+    justify-content: center;
+    align-items: center;
 }
 
-.cargo-track img { 
-    max-height: 100%;
+.gallery-image {
+    max-width: 90%;
+    max-height: 80vh;
     width: auto;
-    flex-shrink: 0;
+    height: auto;
+    object-fit: contain;
     pointer-events: none;
     -webkit-user-drag: none;
+}
+
+.gallery-caption {
+    color: #000;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 1.05rem;
+    text-transform: none;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0;
+    background: none;
+    text-align: center;
+    pointer-events: none;
+    z-index: 2;
+    margin-top: 1rem;
+}
+
+.gallery-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    color: #000;
+    border: none;
+    font-size: 56px;
+    width: auto;
+    height: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: serif;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.gallery-prev {
+    left: 1rem;
+}
+
+.gallery-next {
+    right: 1rem;
 }
 
 /* ========================= */
