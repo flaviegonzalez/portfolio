@@ -173,6 +173,7 @@ function openProjectView(key) {
 // =====================
 function togglePanel(id) {
     const panel = document.getElementById(id);
+    const isMobile = window.innerWidth <= 768;
 
     if (!panel.classList.contains('open')) {
 
@@ -183,7 +184,9 @@ function togglePanel(id) {
 
         panel.classList.add('open');
 
-        if (id !== 'infoPanel') {
+        if (isMobile) {
+            panel.style.height = '100vh';
+        } else if (id !== 'infoPanel') {
             state.projectsH = state.startH;
             panel.style.height = state.startH + 'vh';
         }

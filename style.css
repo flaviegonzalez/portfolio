@@ -221,6 +221,8 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    background: rgb(250, 249, 244);
 }
 
 .gallery-content {
@@ -365,4 +367,13 @@ html, body {
         font-size: 36px;
         padding: 0 1rem;
     }
+
+    .sliding-panel.open {
+        height: 100vh;
+    }
+
+    .sliding-panel {
+        top: 0;
+    }
 }
+
