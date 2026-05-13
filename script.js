@@ -3,50 +3,10 @@ const state = {
     viewH: 40,
     startH: 40,
     maxH: 100,
-    carouselImages: [
-        'assets/Flavie Gonzalez Architecte 1.png',
-        'assets/Flavie Gonzalez Architecte 2.png',
-        'assets/Flavie Gonzalez Architecte 3.png',
-        'assets/Flavie Gonzalez Architecte 4.png',
-        'assets/Flavie Gonzalez Architecte 5.png',
-        'assets/Flavie Gonzalez Architecte 6.png',
-        'assets/Flavie Gonzalez Architecte 7.png',
-        'assets/Flavie Gonzalez Architecte 8.png',
-        'assets/Flavie Gonzalez Architecte 9.png',
-        'assets/Flavie Gonzalez Architecte 10.png',
-        'assets/Flavie Gonzalez Architecte 11.png',
-        'assets/Flavie Gonzalez Architecte 12.png',
-        'assets/Flavie Gonzalez Architecte 13.png',
-        'assets/Flavie Gonzalez Architecte 14.png',
-        'assets/Flavie Gonzalez Architecte 15.png',
-        'assets/Flavie Gonzalez Architecte 16.png',
-        'assets/Flavie Gonzalez Architecte 17.png',
-        'assets/Flavie Gonzalez Architecte 18.png',
-        'assets/Flavie Gonzalez Architecte 19.png'
-
-    ],
-    carouselCaptions: [
-        "L'Atlantique, Biarritz",
-        "L'Atlantique, Biarritz",
-        "L'Atlantique, Biarritz",
-        "L'Atlantique, Biarritz",
-        "L'Atlantique, Biarritz",
-        "Jacques Louvel Tessier, Paris",
-        "Jacques Louvel Tessier, Paris",
-        "Jacques Louvel Tessier, Paris",
-        "Jacques Louvel Tessier, Paris",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie",
-        "L'Alpâge, Haute-Savoie"
-    ],
-    carouselIndex: 0
+    isDragging: false,
+    pos: 0,
+    startX: 0,
+    speed: 0.7
 };
 
 const dom = {
@@ -55,11 +15,8 @@ const dom = {
     viewPanel: document.getElementById('viewPanel'),
     viewScroll: document.getElementById('viewScrollArea'),
     infoPanel: document.getElementById('infoPanel'),
-    carouselContainer: document.getElementById('carouselContainer'),
-    carouselImage: document.getElementById('carouselImage'),
-    carouselCaption: document.getElementById('carouselCaption'),
-    prevBtn: document.getElementById('prevBtn'),
-    nextBtn: document.getElementById('nextBtn')
+    track: document.getElementById('track'),
+    carousel: document.getElementById('carousel')
 };
 
 // =====================
@@ -146,21 +103,10 @@ function openProjectView(key) {
     const gallery = document.querySelector('.view-gallery');
     gallery.innerHTML = "";
 
-    const getCaptionFromSrc = src => {
-        const filename = src.split('/').pop().replace(/\.[^/.]+$/, '');
-        return filename.replace(/[_-]+/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    };
-
-    p.images.forEach(item => {
-        const figure = document.createElement('figure');
-        figure.classList.add('gallery-item');
-
+    p.images.forEach(src => {
         const img = document.createElement('img');
-        const src = typeof item === 'string' ? item : item.src;
         img.src = src;
-        figure.appendChild(img);
-
-        gallery.appendChild(figure);
+        gallery.appendChild(img);
     });
 
     // DESCRIPTION
@@ -254,7 +200,7 @@ dom.viewPanel.addEventListener(
 // =====================
 window.addEventListener('mousedown', e => {
 
-    if (e.target.closest('#carouselContainer') && !e.target.closest('.gallery-btn')) {
+    if (e.target.closest('#carousel')) {
         closeAllPanels();
         return;
     }
@@ -275,29 +221,53 @@ window.addEventListener('mousedown', e => {
 });
 
 // =====================
-// 🖼 GALLERY NAVIGATION
+// 🎞 CAROUSEL
 // =====================
-const updateCarouselImage = () => {
-    dom.carouselImage.src = state.carouselImages[state.carouselIndex];
-    dom.carouselCaption.innerText = state.carouselCaptions[state.carouselIndex];
+const initCarousel = () => {
+    const images = dom.track.innerHTML;
+    dom.track.innerHTML = images + images;
+    animate();
 };
 
-const nextImage = () => {
-    state.carouselIndex = (state.carouselIndex + 1) % state.carouselImages.length;
-    updateCarouselImage();
+const animate = () => {
+    if (!state.isDragging) {
+        state.pos -= state.speed;
+
+        const halfWidth = dom.track.scrollWidth / 2;
+
+        if (Math.abs(state.pos) >= halfWidth) {
+            state.pos = 0;
+        }
+
+        dom.track.style.transform = `translateX(${state.pos}px)`;
+    }
+
+    requestAnimationFrame(animate);
 };
 
-const prevImage = () => {
-    state.carouselIndex = (state.carouselIndex - 1 + state.carouselImages.length) % state.carouselImages.length;
-    updateCarouselImage();
-};
+dom.carousel.addEventListener('mousedown', e => {
+    state.isDragging = true;
+    state.startX = e.pageX - state.pos;
+});
 
-dom.nextBtn.addEventListener('click', nextImage);
-dom.prevBtn.addEventListener('click', prevImage);
+window.addEventListener('mouseup', () => {
+    state.isDragging = false;
+});
+
+window.addEventListener('mousemove', e => {
+    if (state.isDragging) {
+        state.pos = e.pageX - state.startX;
+
+        const halfWidth = dom.track.scrollWidth / 2;
+
+        if (state.pos > 0) state.pos = -halfWidth;
+        if (state.pos < -halfWidth) state.pos = 0;
+
+        dom.track.style.transform = `translateX(${state.pos}px)`;
+    }
+});
 
 // =====================
 // 🚀 INIT
 // =====================
-window.onload = () => {
-    updateCarouselImage();
-};
+window.onload = initCarousel;
