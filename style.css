@@ -289,8 +289,47 @@ html, body {
 
 @media (max-width: 768px) {
 
+    .site-header {
+        padding: 0 1rem;
+    }
+
+    .nav-btn {
+        margin-left: 1rem;
+        font-size: 14px;
+    }
+
+    .panel-content {
+        padding: 1rem;
+    }
+
+    .panel-close {
+        padding: 1rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .project-row {
+        flex-direction: column;
+        padding: 1.25rem 0;
+    }
+
+    .project-col-visual,
+    .project-col-info {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .project-col-visual img {
+        max-width: 100%;
+    }
+
     .view-detail {
         flex-direction: column;
+        padding: 1rem;
     }
 
     .view-header {
@@ -305,17 +344,25 @@ html, body {
         grid-template-columns: 1fr;
     }
 
-    .info-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .view-text {
+        padding-top: 0.75rem;
     }
 
-    .project-row {
-        flex-direction: column;
+    .gallery-bg {
+        padding: 1rem 0 2rem;
     }
 
-    .project-col-visual,
-    .project-col-info {
-        width: 100%;
+    .gallery-image {
+        max-width: 100%;
+        max-height: 60vh;
+    }
+
+    .gallery-caption {
+        font-size: 1rem;
+    }
+
+    .gallery-btn {
+        font-size: 36px;
+        padding: 0 1rem;
     }
 }
