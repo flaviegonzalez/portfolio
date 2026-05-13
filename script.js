@@ -25,58 +25,58 @@ const dom = {
 const projectsData = {
     barthou: {
         number: "001 / 005",
-        title: "Barthou",
+        title: "Atlantique",
         subtitle: "Biarritz, 2025",
         images: [
             "assets/LOUISBARTHOU_1.png",
             "assets/LOUISBARTHOU_2.png",
             "assets/LOUISBARTHOU_3.png"
         ],
-        description: "Projet Barthou."
+        description: "<p>&nbsp;</p>\n<p>ATLANTIQUE,&nbsp;Appartement haut de gamme, 95m2.</p>\n<p>Biarritz, 2025.</p>\n<p>Projet d&rsquo;am&eacute;nagement int&eacute;rieur d&rsquo;un appartement avec vue mer au c&oelig;ur de Biarritz. L&rsquo;intervention met l&rsquo;accent sur la fluidit&eacute; des espaces et la lumi&egrave;re naturelle. Une atmosph&egrave;re d&eacute;licate et color&eacute;e, pens&eacute;e pour dialoguer avec le paysage.</p>\n<p>Projet livr&eacute; en octobre 2025.&nbsp;</p>\n<p><em>Interior design project for a sea-view apartment in the heart of Biarritz. The intervention focuses on spatial fluidity and natural light. A subtle, colorful atmosphere has been created to engage in dialogue with the surrounding landscape.</em></p>\n<p><em>Delivered project.</em></p>"
     },
     gemillon: {
         number: "002 / 005",
-        title: "Gemillon",
+        title: "Alpâge",
         subtitle: "Haute-Savoie, 2026",
         images: [
             "assets/GEMILLON_1.png",
             "assets/GEMILLON_2.png",
             "assets/GEMILLON_3.png"
         ],
-        description: "Projet Gemillon."
+        description: "<p></p>\n<p>ALPAGE, Chalet de montagne, 300m2</p>\n<p>Haute-Savoie, 2026</p>\n<p>Architectes : Michael Levy / Jean Philippe Besson</p>\n<p>Agencement int&eacute;rieur de ce chalet nich&eacute; au c&oelig;ur des montagnes, reprenant les codes du chalet d&rsquo;alpage et valorisant le savoir-faire local. Le projet s&rsquo;articule autour d&rsquo;un &eacute;quilibre entre h&eacute;ritage et proposition architecturale personnelle. Des fresques et motifs viennent nourrir les espaces, tandis qu&rsquo;une monochromie assum&eacute;e met en valeur les mati&egrave;res brutes : enveloppe en bois massif, plafond en b&eacute;ton et &eacute;corces, foyer central massif, escalier sculptural et portes signatures. L&rsquo;ensemble s&rsquo;efface au profit du paysage environnant.</p>\n<p>Chantier en cours, livraison pr&eacute;vue pour la fin de l&rsquo;ann&eacute;e 2026.</p>\n<p><em>Interior design of this chalet nestled in the heart of the mountains, drawing on the codes of traditional alpine chalets while highlighting local craftsmanship. The project is based on a balance between heritage and a distinctive architectural approach. Murals and patterns enrich the spaces, while an intentional monochromatic palette emphasizes raw materials: a solid timber envelope, concrete and bark ceilings, a monumental central fireplace, a sculptural staircase, and signature doors. The interior recedes to give full prominence to the surrounding landscape.</em></p>\n<p><em>Construction in progress, completion scheduled for the end of 2026.</em></p>"
     },
     bastille: {
         number: "003 / 005",
-        title: "Bastille",
-        subtitle: "Paris, 2025",
+        title: "Ile-Tudy",
+        subtitle: "Ile Tudy, 2024",
         images: [
             "assets/ILETUDY_1.png",
             "assets/ILETUDY_2.png",
             "assets/ILETUDY_3.png"
         ],
-        description: "Projet Bastille."
+        description: "<p></p>\n<p></p>\n<p>ILE-TUDY, Maison de vacances, 60m2</p>\n<p>Ile Tudy, Bretagne, 2024</p>\n<p>Travail de revalorisation des espaces pour cette petite maison au coeur de l&rsquo;Ile Tudy. Mise en oeuvre de volumes coh&eacute;rents pour l&rsquo;usage avec une distribution fluide des espaces. Un jeu de couleurs et mati&egrave;res a &eacute;t&eacute; imagin&eacute; pour ce projet pour illuminer les mois d&rsquo;hiver et accompagner le printemps et l'&eacute;t&eacute;.</p>\n<p><em>Renovation and enhancement of the spaces in this small house in the heart of &Icirc;le-Tudy. The project introduces coherent volumes adapted to use, with a fluid spatial layout. A palette of colours and materials has been designed to brighten the winter months and accompany the arrival of spring and summer.</em></p>"
     },
     louvel: {
         number: "004 / 005",
-        title: "Louvel",
-        subtitle: "Paris, 2025",
+        title: "Jacques Louvel Tessier",
+        subtitle: "Paris 10, 2025",
         images: [
             "assets/JLT_1.png",
             "assets/JLT_2.png",
             "assets/JLT_3.png"
         ],
-        description: "Projet Louvel."
+        description: "<p></p>\n<p>JACQUES LOUVEL TESSIER, Appartement, 40m2</p>\n<p>Paris 10, 2025</p>\n<p>Architecte : Michael Levy</p>\n<p>Travail d&rsquo;accompagnement et mise en oeuvre. S&eacute;lection de mat&eacute;riaux et suivi du chantier pour ce petit appartement parisien, voulu comme un pied &agrave; terre chaleureux et confortable.</p>\n<p>Projet livr&eacute; en f&eacute;vrier 2025.</p>\n<p><em>Design support and implementation. Selection of materials and site supervision for this small Parisian apartment, conceived as a warm and comfortable pied-&agrave;-terre.</em></p>\n<p><em>Project completed in February 2025.</em></p>"
     },
     lesclefs: {
         number: "005 / 005",
-        title: "Les Clefs",
+        title: "Aravis",
         subtitle: "Haute-Savoie, 2025",
         images: [
             "assets/LESCLEFS_1.png",
             "assets/LESCLEFS_2.png",
             "assets/LESCLEFS_3.png"
         ],
-        description: "Projet Les Clefs."
+        description: "<p></p>\n<p>ARAVIS, Villa de montagne, 300m2</p>\n<p>Haute-Savoie, 2025</p>\n<p>Architecte : Michael Levy</p>\n<p>Agencement int&eacute;rieur de cette villa sur trois niveaux. Pens&eacute; comme un lieu de vill&eacute;giature pouvant recevoir de nombreux invit&eacute;s, la villa s&rsquo;articule sur trois &eacute;tages proposant une fluidit&eacute; dans la circulation et l&rsquo;entretient de cette maison. Des mat&eacute;riaux esth&eacute;tiques et durables ont &eacute;t&eacute; choisis, tout en travaillant l&rsquo;ambiance globale, souhait&eacute;e chaleureuse et conviviale.</p>\n<p><em>Interior design of this three-storey villa. Conceived as a holiday residence capable of hosting numerous guests, the villa is organised across three levels, ensuring fluid circulation and ease of maintenance. A selection of aesthetic and durable materials has been made, while developing an overall atmosphere intended to be warm and convivial.</em></p>"
     }
 };
 
@@ -111,7 +111,7 @@ function openProjectView(key) {
 
     // DESCRIPTION
     const text = document.querySelector('.view-text .col-text');
-    text.innerHTML = `<p>${p.description}</p>`;
+    text.innerHTML = p.description;
 }
 
 // =====================
